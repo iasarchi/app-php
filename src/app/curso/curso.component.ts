@@ -14,8 +14,8 @@ export class CursoComponent implements OnInit {
   url ="http://localhost:8080/api/php/";
 
   //Vetor de cursos
-  
-  vetor: Curso[];
+
+  vetor: Curso[] = [];
 
   //Construtor  
     
@@ -41,7 +41,7 @@ export class CursoComponent implements OnInit {
   }
 
   //Alterar
-0
+
   alterar(): void{
     alert("Alterar");
   }
