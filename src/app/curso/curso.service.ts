@@ -10,9 +10,10 @@ import { Curso } from './curso';
 export class CursoService {
 
   //URL 
-  url = "http://localhost:8080/api/php/";
+  url = "http://localhost/api/php/";
 
   //Vetor
+  
   vetor: Curso[];
 
   //Construtor
@@ -26,6 +27,15 @@ export class CursoService {
         return this.vetor;
       })
     )
+  }
+
+  //Cadastrar curso
+  cadastrarCurso(curso: Curso): Observable<Curso[]>{
+    return this.http.post(this.url+'cadastrar',{cursos:curso})
+    .pipe(map((res) =>{
+      this.vetor.push(res['curso']);
+      return this.vetor;
+    }))
   }
 
 }
