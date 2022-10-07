@@ -68,15 +68,46 @@ selecao(){
 
 //Alterar
 
-alterar(): void {
+alterar(curso:Curso){
+  this.curso_service.atualizarCurso(this.curso).subscribe(
+    (res)=>{
 
+      //Atualizar vetor
+      this.vetor = res;
+
+      //Limpar os valores do objeto
+      this.curso.nomeCurso = null;
+      this.curso.valorCurso = null;
+
+      //Atualiza a listagem
+      this.selecao();
+    }
+  )
 }
+
 
 //Remover
 
-remover(): void {
+remover(curso:Curso){
+  this.curso_service.removerCurso(this.curso).subscribe(
+    (res : Curso[])=>{
+      this.vetor = res;
 
+      this.curso.nomeCurso = null;
+      this.curso.valorCurso = null;
+
+      this.selecao()
+    }
+  )
 }
+
+  //Selecionar curso especifico
+  selecionarCurso(curso:Curso){
+    this.curso.idCurso = curso.idCurso;
+    this.curso.nomeCurso = curso.nomeCurso;
+    this.curso.valorCurso = curso.valorCurso;
+  }
+
 
 
 }
